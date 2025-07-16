@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<!-- Comprehensive test cases covering all supported elements -->
+<test-case-definitions>
+
+<!-- 基础数值测试 -->
+<test-case>
+    <id>C007</id>
+    <description>Single decimal value</description>
+    <input>4.7</input>
+    <output>4.7</output>
+</test-case>
+
+<test-case>
+    <id>C008</id>
+    <description>Decimal with trailing zeros</description>
+    <input>5.00</input>
+    <output>5</output>
+</test-case>
+
+<test-case>
+    <id>C009</id>
+    <description>Scientific notation (uppercase E)</description>
+    <input>7E3</input>
+    <output>7000</output>
+</test-case>
+
+<test-case>
+    <id>C010</id>
+    <description>Large scientific notation</description>
+    <input>1.7e7</input>
+    <output>17000000</output>
+</test-case>
+
+<test-case>
+    <id>C011</id>
+    <description>Small scientific notation</description>
+    <input>9.334e-2</input>
+    <output>0.0933</output>
+</test-case>
+
+<test-case>
+    <id>C012</id>
+    <description>Explicit positive exponent</description>
+    <input>5.1e+3</input>
+    <output>5100</output>
+</test-case>
+
+<test-case>
+    <id>C013</id>
+    <description>Zero exponent handling</description>
+    <input>3.14E-0</input>
+    <output>3.14</output>
+</test-case>
+
+<!-- 算术运算测试 -->
+<test-case>
+    <id>C014</id>
+    <description>Basic arithmetic operations</description>
+    <input>2 + 6 * 4</input>
+    <output>26</output>
+</test-case>
+
+<test-case>
+    <id>C015</id>
+    <description>Complex exponent calculation</description>
+    <input><![CDATA[20 ^ ((3 - 1) * 2 - 2)]]></input>
+    <output>400</output>
+</test-case>
+
+<test-case>
+    <id>C016</id>
+    <description>Nested exponent operations</description>
+    <input><![CDATA[2 ^ (4 ^ 3)]]></input>
+    <output>18446744073709552000</output>
+</test-case>
+
+<test-case>
+    <id>C017</id>
+    <description>Exponent associativity</description>
+    <input><![CDATA[2 ^ 4 ^ 3]]></input>
+    <output>18446744073709552000</output>
+</test-case>
+
+<!-- 取负运算测试 -->
+<test-case>
+    <id>C018</id>
+    <description>Consecutive operators handling</description>
+    <input>2.5 +- 2.4</input>
+    <output>0.1</output>
+</test-case>
+
+<test-case>
+    <id>C019</id>
+    <description>Double negation calculation</description>
+    <input>5 --2.5</input>
+    <output>7.5</output>
+</test-case>
+
+<!-- 三角函数测试 -->
+<test-case>
+    <id>C020</id>
+    <description>Sine function calculation</description>
+    <input><![CDATA[sin(3.14 / 2)]]></input>
+    <output>1</output>
+</test-case>
+
+<test-case>
+    <id>C021</id>
+    <description>Cosine function precision</description>
+    <input><![CDATA[cos(3.14 / 4)]]></input>
+    <output>0.7074</output>
+</test-case>
+
+<!-- 极值函数测试 -->
+<test-case>
+    <id>C022</id>
+    <description>Max function with integers</description>
+    <input>max(3, 2, 6)</input>
+    <output>6</output>
+</test-case>
+
+<test-case>
+    <id>C023</id>
+    <description>Min function with integers</description>
+    <input>min(3, 2, 6)</input>
+    <output>2</output>
+</test-case>
+
+<test-case>
+    <id>C024</id>
+    <description>Nested min/max functions</description>
+    <input>max(min(32, 7), max(6,4))</input>
+    <output>7</output>
+</test-case>
+
+<!-- 三元运算测试 -->
+<test-case>
+    <id>C025</id>
+    <description>Simple ternary operation</description>
+    <input><![CDATA[2.25 < (4 / 2) ? 5 : 6]]></input>
+    <output>6</output>
+</test-case>
+
+<test-case>
+    <id>C026</id>
+    <description>Equality check in ternary</description>
+    <input><![CDATA[2 >= 2 ? 1.5 : 2.5]]></input>
+    <output>1.5</output>
+</test-case>
+
+<test-case>
+    <id>C027</id>
+    <description>Nested ternary operations</description>
+    <input><![CDATA[max(-1, 0) > 0 ? 5 : (3 >= 0 ? 4 : 5)]]></input>
+    <output>4</output>
+</test-case>
+
+<!-- 逻辑运算测试 -->
+<test-case>
+    <id>C028</id>
+    <description>OR operator in condition</description>
+    <input><![CDATA[true | false ? 1 : 0]]></input>
+    <output>1</output>
+</test-case>
+
+<test-case>
+    <id>C029</id>
+    <description>NOT operator combination</description>
+    <input><![CDATA[!(true & false) ? 1 : 0]]></input>
+    <output>1</output>
+</test-case>
+
+<test-case>
+    <id>C030</id>
+    <description>False condition handling</description>
+    <input><![CDATA[5 < 4 ? 1 : 0]]></input>
+    <output>0</output>
+</test-case>
+
+<test-case>
+    <id>C031</id>
+    <description>Chained ternary operations</description>
+    <input><![CDATA[true ? 5 : (false ? 1 : 0)]]></input>
+    <output>5</output>
+</test-case>
+
+</test-case-definitions>

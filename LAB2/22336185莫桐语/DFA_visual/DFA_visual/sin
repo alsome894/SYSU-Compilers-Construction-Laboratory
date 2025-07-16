@@ -1,0 +1,13 @@
+digraph {
+	ranksep=0.5 size="8, 8"
+	rankdir=LR
+	Initial [label="" fontsize=14.0 shape=point]
+	0 [fontsize=14.0 shape=circle]
+	18 [fontsize=14.0 shape=circle]
+	19 [fontsize=14.0 shape=circle]
+	20 [fontsize=14.0 shape=doublecircle]
+	Initial -> 0 [arrowsize=0.85]
+	0 -> 18 [label=" s " arrowsize=0.85 fontsize=14.0]
+	18 -> 19 [label=" i " arrowsize=0.85 fontsize=14.0]
+	19 -> 20 [label=" n " arrowsize=0.85 fontsize=14.0]
+}

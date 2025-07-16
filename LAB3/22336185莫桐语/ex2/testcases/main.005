@@ -1,0 +1,64 @@
+(* 变异版本 LexicalException——IllegalIdentifierLengthException *)
+
+MODULE Main;
+    CONST zero = 0;
+    TYPE boolabcdefghijklmnopqrstuvwxyz = BOOLEAN;  (* 超长标识符 *)
+    VAR num, pow, result: INTEGER;
+
+    (* 计算num^pow *)
+    PROCEDURE Power(num, pow: INTEGER);
+        VAR i, result: INTEGER;
+    BEGIN
+        result := 1;
+        i := 0;
+
+        WHILE i < pow DO
+            result := result * num;
+            i := i + 1
+        END;
+        
+        WRITE(result)
+    END Power;
+
+    (* 计算num的质因数，并以第一个质因数判断num质合性、奇偶性 *)
+    PROCEDURE PrimeFactor(num : INTEGER);
+        VAR fac : ARRAY 100 OF RECORD
+                value : INTEGER;
+                evenflag : bool;
+            END;
+            i, j, temp : INTEGER;
+    BEGIN
+        i := 2;
+        j := zero;
+        temp := num;
+        WHILE ~(temp <= 1) DO
+            WHILE temp MOD i = zero DO
+                j := j + 1;
+                fac[j].value := i;
+                fac[j].evenflag := (i = 2);
+                temp := temp div i
+            END;
+            i := i + 1
+        END;
+
+        (* 如果num为质数输出0 *)
+        IF (fac[0].value = num) OR (fac[0].value = 1) THEN
+            WRITE(0)
+
+        (* 如果num为奇合数输出1 *)
+        ELSIF ~fac[ZERO].evenflag & ~(fac[ZERO].value = 2) THEN
+            write(1)
+
+        (* 如果num为偶合数输出2 *)
+        ELSE
+            WriteLN(2)
+        END
+    END PrimeFactor;
+    
+    BEGIN
+        Read(num);
+        Read(pow);
+
+        Power(num, pow);
+        PrimeFactor(num)
+    END Main.

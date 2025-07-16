@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+<!-- Enhanced test cases covering all exception types -->
+<test-case-definitions>
+
+<!-- IllegalDecimalException (3rd category) -->
+<test-case>
+	<id>E301</id>
+	<description>Invalid exponent format</description>
+	<input>3.e3 + 1</input>
+	<exception>IllegalDecimalException</exception>
+</test-case>
+
+<test-case>
+	<id>E302</id>
+	<description>Decimal in exponent part</description>
+	<input>4 + 10.E+5 + 1</input>
+	<exception>IllegalDecimalException</exception>
+</test-case>
+
+<test-case>
+	<id>E303</id>
+	<description>Decimal in exponent part</description>
+	<input>3.3e3.3 + 1</input>
+	<exception>IllegalDecimalException</exception>
+</test-case>
+
+<test-case>
+	<id>E304</id>
+	<description>Missing exponent digits</description>
+	<input>1 + 3.3E.3 + 2</input>
+	<exception>IllegalDecimalException</exception>
+</test-case>
+
+<test-case>
+	<id>E305</id>
+	<description>Expression in exponent part</description>
+	<input>1 + 3.3E-(3 + 2)</input>
+	<exception>IllegalDecimalException</exception>
+</test-case>
+
+<test-case>
+	<id>E306</id>
+	<description>Trailing decimal point</description>
+	<input>min(4., 7)</input>
+	<exception>IllegalDecimalException</exception>
+</test-case>
+
+<test-case>
+	<id>E307</id>
+	<description>Function call in exponent</description>
+	<input>12.3Emax(4,5,6)</input>
+	<exception>IllegalDecimalException</exception>
+</test-case>
+
+<!-- IllegalIdentifierException (4th category) -->
+<test-case>
+	<id>E401</id>
+	<description>Undefined variable</description>
+	<input>5 / v4 + 1</input>
+	<exception>IllegalIdentifierException</exception>
+</test-case>
+
+<test-case>
+	<id>E402</id>
+	<description>Undefined function</description>
+	<input>4 + mix(5,2) + 1</input>
+	<exception>IllegalIdentifierException</exception>
+</test-case>
+
+<!-- IllegalSymbolException (5th category) -->
+<test-case>
+	<id>E501</id>
+	<description>Invalid operator symbol</description>
+	<input><![CDATA[(5 @ 4) ? 7 : 8]]></input>
+	<exception>IllegalSymbolException</exception>
+</test-case>
+
+<!-- MissingOperatorException (7th category) -->
+<test-case>
+	<id>E701</id>
+	<description>Missing operator between expressions</description>
+	<input>(1 + 2)(3 - 4) - 5</input>
+	<exception>MissingOperatorException</exception>
+</test-case>
+
+<test-case>
+	<id>E702</id>
+	<description>Missing operator after exponent</description>
+	<input>(1 + 2) ^ (3 - 4)5</input>
+	<exception>MissingOperatorException</exception>
+</test-case>
+
+<test-case>
+	<id>E703</id>
+	<description>Missing operator after function</description>
+	<input>cos(0.5)12.3E+4</input>
+	<exception>MissingOperatorException</exception>
+</test-case>
+
+<!-- MissingOperandException (8th category) -->
+<test-case>
+	<id>E801</id>
+	<description>Missing right operand</description>
+	<input>(1 + 2) ^ (3 - ) + 5</input>
+	<exception>MissingOperandException</exception>
+</test-case>
+
+<test-case>
+	<id>E802</id>
+	<description>Missing right operand</description>
+	<input>3 > 2.5 * 1.5 ? 9 :</input>
+	<exception>MissingOperandException</exception>
+</test-case>
+
+<test-case>
+	<id>E804</id>
+	<description>Empty condition branch</description>
+	<input><![CDATA[7 > 0 ? 7 <= 0 ? : 6 : 5]]></input>
+	<exception>MissingOperandException</exception>
+</test-case>
+
+<test-case>
+	<id>E805</id>
+	<description>Empty function parameter</description>
+	<input>sin()</input>
+	<exception>MissingOperandException</exception>
+</test-case>
+
+<test-case>
+	<id>E806</id>
+	<description>Empty function parameter</description>
+	<input>cos(3.14, )</input>
+	<exception>MissingOperandException</exception>
+</test-case>
+
+<test-case>
+	<id>E807</id>
+	<description>Empty parameter list</description>
+	<input>min()</input>
+	<exception>MissingOperandException</exception>
+</test-case>
+
+<test-case>
+	<id>E808</id>
+	<description>Empty parameter list</description>
+	<input>min(2.5)</input>
+	<exception>MissingOperandException</exception>
+</test-case>
+
+<test-case>
+	<id>E809</id>
+	<description>Empty parameter list</description>
+	<input>min(, 1.8)</input>
+	<exception>MissingOperandException</exception>
+</test-case>
+
+<test-case>
+	<id>E810</id>
+	<description>Empty parameter list</description>
+	<input>max(3.14, )</input>
+	<exception>MissingOperandException</exception>
+</test-case>
+
+<test-case>
+	<id>E811</id>
+	<description>Missing middle parameter</description>
+	<input>max(17, , 87)</input>
+	<exception>MissingOperandException</exception>
+</test-case>
+
+<test-case>
+	<id>E812</id>
+	<description>Empty true branch</description>
+	<input>true ? : 5</input>
+	<exception>MissingOperandException</exception>
+</test-case>
+
+<test-case>
+	<id>E813</id>
+	<description>Missing condition</description>
+	<input>2 + ( ? 4 : 5)</input>
+	<exception>MissingOperandException</exception>
+</test-case>
+
+<!-- MissingLeftParenthesisException (9th category) -->
+<test-case>
+	<id>E901</id>
+	<description>Unbalanced parentheses</description>
+	<input>(2 + 3) ^ 3) - ((1 + 1)</input>
+	<exception>MissingLeftParenthesisException</exception>
+</test-case>
+
+<!-- MissingRightParenthesisException (10th category) -->
+<test-case>
+	<id>E1001</id>
+	<description>Nested unclosed parentheses</description>
+	<input>((2 + 3) ^ ((3 - 1) + 1)</input>
+	<exception>MissingRightParenthesisException</exception>
+</test-case>
+
+<!-- FunctionCallException (11th category) -->
+<test-case>
+	<id>E1101</id>
+	<description>Invalid function syntax</description>
+	<input>sin(2, 1)</input>
+	<exception>FunctionCallException</exception>
+</test-case>
+
+<test-case>
+	<id>E1102</id>
+	<description>Invalid function syntax</description>
+	<input>max5,6,8)</input>
+	<exception>FunctionCallException</exception>
+</test-case>
+
+<!-- TrinaryOperationException (12th category) -->
+<test-case>
+	<id>E1201</id>
+	<description>Nested ternary error</description>
+	<input><![CDATA[false ? 9 : true ? 1 : 3 : 5]]></input>
+	<exception>TrinaryOperationException</exception>
+</test-case>
+
+<!-- EmptyExpressionException (13th category) -->
+<test-case>
+	<id>E1301</id>
+	<description>Empty input</description>
+	<input><![CDATA[]]></input>
+	<exception>EmptyExpressionException</exception>
+</test-case>
+
+<test-case>
+	<id>E1302</id>
+	<description>Whitespace only</description>
+	<input><![CDATA[   ]]></input>
+	<exception>EmptyExpressionException</exception>
+</test-case>
+
+<!-- DividedByZeroException (15th category) -->
+<test-case>
+	<id>E1501</id>
+	<description>Divided By Zero Exception</description>
+	<input>4 / (12 - 3 * 4) + 1</input>
+	<exception>DividedByZeroException</exception>
+</test-case>
+
+<!-- TypeMismatchedException (16th category) -->
+<test-case>
+	<id>E1601</id>
+	<description>Non-boolean condition</description>
+	<input><![CDATA[(13 < 2 * 5) + 12]]></input>
+	<exception>TypeMismatchedException</exception>
+</test-case>
+
+<test-case>
+	<id>E1602</id>
+	<description>Non-boolean condition</description>
+	<input>12 ? 34 : 56</input>
+	<exception>TypeMismatchedException</exception>
+</test-case>
+
+<test-case>
+	<id>E1603</id>
+	<description>Mixed type branches</description>
+	<input>true ? 42.5 > 5 * 8 : 15</input>
+	<exception>TypeMismatchedException</exception>
+</test-case>
+
+<test-case>
+	<id>E1604</id>
+	<description>Boolean exponent</description>
+	<input>4 ^ (32.5 > 65)</input>
+	<exception>TypeMismatchedException</exception>
+</test-case>
+
+<test-case>
+	<id>E1605</id>
+	<description>Boolean function parameter</description>
+	<input>sin(32.5 > 65)</input>
+	<exception>TypeMismatchedException</exception>
+</test-case>
+
+<test-case>
+	<id>E1606</id>
+	<description>Bitwise operation on float</description>
+	<input>32.5 | 65</input>
+	<exception>TypeMismatchedException</exception>
+</test-case>
+
+</test-case-definitions>
